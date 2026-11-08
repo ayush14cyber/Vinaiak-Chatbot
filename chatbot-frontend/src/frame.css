@@ -1,0 +1,681 @@
+/* The chat, inside its iframe: vw and vh are the iframe's. */
+
+:root {
+  /* A site sets these with data-*-color attributes. */
+  --heading: #f15922;
+  --user-box: #ffb056;
+  --bot-box: white;
+  --box-border: #ef8812;
+  --link: blueviolet;
+  --option: #f9a23f;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: white;
+  color: #1c1b1e;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* The doodles behind the chat. */
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("./assets/doodle.svg") center / cover;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+a {
+  color: var(--link);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+#heading {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 15dvh;
+  min-height: 5.5rem;
+  border-radius: 10px;
+  background: var(--heading);
+}
+
+#heading .avatar {
+  height: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+}
+
+#heading .title {
+  margin: 0 0.5rem;
+  color: white;
+  font-size: 1.17rem;
+  text-align: center;
+}
+
+#heading .actions {
+  display: flex;
+  align-items: center;
+  gap: max(2dvw, 0.75rem);
+}
+
+#reset {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#reset svg {
+  width: min(6.5dvw, 1.6rem);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#reset:hover,
+#reset:focus-visible {
+  color: rgb(89, 88, 88);
+  outline: none;
+}
+
+#reset:disabled {
+  color: white;
+  opacity: 0.5;
+  cursor: default;
+}
+
+#close {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: min(10dvw, 3.5rem);
+  font-weight: 100;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+#close:hover,
+#close:focus-visible {
+  color: rgb(89, 88, 88);
+  outline: none;
+}
+
+#heading .credit {
+  position: absolute;
+  right: 0;
+  bottom: 1dvh;
+  left: 0;
+  margin: 0;
+  color: #ffffffc4;
+  font-size: small;
+  text-align: center;
+}
+
+#heading .credit a {
+  color: inherit;
+}
+
+#chat-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 2dvh 1dvw 1.5rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+#chat-area::-webkit-scrollbar {
+  display: none;
+}
+
+.notice {
+  align-self: center;
+  max-width: 85%;
+  margin: 0 0 1.5dvh;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.notice a {
+  color: inherit;
+}
+
+.box {
+  position: relative;
+  flex: none;
+  max-width: 80%;
+  margin-bottom: 1dvh;
+  border-radius: 10px;
+  font-size: medium;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.box.user {
+  align-self: flex-end;
+  margin-right: 1dvw;
+  padding: max(2dvw, 0.5rem);
+  border-top-right-radius: 0;
+  background: var(--user-box);
+  white-space: pre-wrap;
+  animation: fade-in 0.3s ease-out;
+}
+
+.box.bot {
+  align-self: flex-start;
+  margin-top: 0.5dvh;
+  margin-left: 3dvw;
+  padding: 0.5rem 0.75rem;
+  border-top-left-radius: 0;
+  background: var(--bot-box);
+  box-shadow: 0 0 2dvh var(--box-border);
+  animation: slide-right 0.5s ease-out;
+}
+
+.box.bot.error {
+  box-shadow: 0 0 2dvh #e5484d;
+}
+
+.avatar.bot {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.5dvh;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Replies, which are markdown. */
+
+.box p {
+  margin: 0;
+}
+
+.box p + p,
+.box p + ul,
+.box p + ol {
+  margin-top: 0.5em;
+}
+
+.box .disclaimer {
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.box * + .disclaimer {
+  margin-top: 0.5em;
+}
+
+.box ul,
+.box ol {
+  margin: 0.2em 0;
+  padding-left: 1.5em;
+}
+
+.box ol li {
+  margin: 0.7em 0;
+}
+
+.box ul li {
+  margin: 0.2em 0 0.2em 0.5em;
+}
+
+.box li::marker {
+  font-weight: bolder;
+}
+
+.box ul li::marker {
+  font-size: x-large;
+}
+
+.box img,
+.box video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.box img {
+  cursor: zoom-in;
+}
+
+/* The images the visitor sent, above their text. */
+.box.user:has(.images) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.box.user .images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.box.user .images img {
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+  cursor: default;
+}
+
+.box.user .images img:only-child {
+  width: 11rem;
+  height: auto;
+}
+
+.box table {
+  width: 100%;
+  margin: 1em 0;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.box th,
+.box td {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.box th {
+  background: #f4f5f7;
+  color: #333;
+  font-weight: 600;
+}
+
+.box tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.box pre {
+  overflow-x: auto;
+}
+
+/* What the chatbot is doing before it replies. */
+
+/* The doodle, and what it's doing on the line below. */
+.box.status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.status .text {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.status .label {
+  animation: fade-in 0.3s ease-out;
+}
+
+.status .dots i {
+  display: inline-block;
+  width: 0.35rem;
+  font-size: large;
+  font-style: normal;
+  line-height: 1;
+  animation: wavy 1.5s infinite ease-in-out;
+}
+
+.status .dots i:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.status .dots i:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.doodle {
+  display: none;
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--box-border);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+.status[data-status="understanding"] .understanding,
+.status[data-status="searching"] .searching,
+.status[data-status="thinking"] .thinking {
+  display: block;
+  animation: fade-in 0.3s ease-out;
+}
+
+/* The message being read, line by line. */
+.understanding .line {
+  stroke-dasharray: 10;
+  animation: write 1.6s infinite ease-in-out;
+}
+
+.understanding .line + .line {
+  animation-delay: 0.3s;
+}
+
+/* A magnifier going over a page. */
+.searching .page {
+  opacity: 0.4;
+}
+
+.searching .glass {
+  animation: scan 1.8s infinite ease-in-out;
+}
+
+.searching .glass circle {
+  fill: var(--bot-box);
+}
+
+/* An idea lighting up. */
+.thinking .bulb {
+  animation: glow 1.4s infinite ease-in-out;
+}
+
+.thinking .rays {
+  animation: shine 1.4s infinite ease-in-out;
+}
+
+/* Replies the visitor may send next. */
+
+.options {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  margin: 0.5dvh 2dvw 2dvh;
+  animation: fade-in 0.5s ease-out;
+}
+
+.option {
+  margin: 1dvh;
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 0 2px 2px var(--option);
+  font-size: 0.95rem;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.option:hover,
+.option:focus-visible {
+  background: var(--option);
+  outline: none;
+}
+
+#composer {
+  position: relative;
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  border-top: 1px solid rgb(150, 150, 150);
+  background: white;
+}
+
+#composer:focus-within {
+  border-top-color: rgb(90, 90, 90);
+}
+
+/* The images attached to the next message, above where it's typed. */
+#attachments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.8rem 2dvw 0;
+}
+
+#attachments[hidden] {
+  display: none;
+}
+
+.attachment {
+  position: relative;
+}
+
+.attachment img {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.attachment .remove {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.45rem;
+  display: grid;
+  place-items: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(40, 40, 40, 0.85);
+  color: white;
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+#attachments .note {
+  margin: 0;
+  color: #b45309;
+  font-size: 0.85rem;
+}
+
+#attachments .note:empty {
+  display: none;
+}
+
+#attach {
+  flex: none;
+  display: grid;
+  place-items: center;
+  margin: 1.5dvh 0;
+  padding: 0 max(1dvw, 0.5rem);
+  border: none;
+  background: transparent;
+  color: rgb(120, 120, 120);
+  cursor: pointer;
+}
+
+#attach svg {
+  width: clamp(1.3rem, 5dvw, 1.8rem);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+
+#attach:hover,
+#attach:focus-visible {
+  outline: none;
+  color: rgb(60, 60, 60);
+}
+
+#attach:hover svg,
+#attach:focus-visible svg {
+  transform: scale(1.15);
+}
+
+#text-input {
+  flex: 1;
+  min-height: 6dvh;
+  max-height: 30dvh;
+  padding: 1.5dvh 2dvw;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  /* As big as the messages; smaller, and iPhones zoom in on it. */
+  font-size: 1rem;
+  resize: none;
+  scrollbar-width: none;
+}
+
+#text-input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+#send {
+  flex: none;
+  display: grid;
+  place-items: center;
+  margin: 1.5dvh 0;
+  padding: 0 max(1.5dvw, 0.6rem);
+  border: none;
+  border-left: 1px solid rgb(150, 150, 150);
+  background: transparent;
+}
+
+#send svg {
+  width: clamp(1.5rem, 6dvw, 2.2rem);
+  transition: transform 0.2s;
+}
+
+#send:not(:disabled):hover svg,
+#send:focus-visible svg {
+  transform: scale(1.15);
+}
+
+#send:focus-visible {
+  outline: none;
+}
+
+#send:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-right {
+  from {
+    left: -50%;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes wavy {
+  50% {
+    transform: translateY(-0.4em);
+  }
+}
+
+@keyframes write {
+  0% {
+    stroke-dashoffset: 10;
+  }
+  45%,
+  75% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -10;
+  }
+}
+
+@keyframes scan {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2.5px, 2px);
+  }
+  50% {
+    transform: translate(0, 4.5px);
+  }
+  75% {
+    transform: translate(-1.5px, 2px);
+  }
+}
+
+@keyframes glow {
+  50% {
+    fill: color-mix(in srgb, var(--box-border) 30%, transparent);
+  }
+}
+
+@keyframes shine {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}

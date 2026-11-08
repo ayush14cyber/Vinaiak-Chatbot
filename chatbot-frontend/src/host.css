@@ -1,0 +1,74 @@
+/* Added to the site's page: the button that opens the chat, and the chat's iframe. */
+
+#vinaiak-chatbot-launcher {
+  position: fixed;
+  right: 1vw;
+  bottom: 1vh;
+  z-index: 9999;
+  width: 15dvmin;
+  height: 15dvmin;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+/* Only keyboard users need to see where the focus is, whatever the site's styles say. */
+#vinaiak-chatbot-launcher:focus:not(:focus-visible) {
+  outline: none;
+}
+#vinaiak-chatbot-launcher:hover {
+  transform: scale(1.2);
+}
+
+#vinaiak-chatbot-launcher[hidden] {
+  display: none;
+}
+
+#vinaiak-chatbot-launcher img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (min-aspect-ratio: 1/1) {
+  #vinaiak-chatbot-launcher {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+#vinaiak-chatbot-frame {
+  position: fixed;
+  right: 1px;
+  bottom: 1dvh;
+  z-index: 10000;
+  display: none;
+  width: 100dvw;
+  height: 95dvh;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 0 5px rgb(100, 100, 100);
+  color-scheme: light;
+}
+
+@media (orientation: landscape) {
+  #vinaiak-chatbot-frame {
+    width: min(100dvw, max(30dvw, 360px));
+    height: 98dvh;
+  }
+}
+
+#vinaiak-chatbot-frame.open {
+  display: block;
+}
+
+/* The chat says it's protected by reCAPTCHA instead, as Google allows. */
+.grecaptcha-badge {
+  visibility: hidden;
+}

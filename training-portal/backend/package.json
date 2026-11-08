@@ -1,0 +1,39 @@
+{
+  "name": "training-portal-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The training portal's API (Express), and the watcher Lambda that keeps pages in sync with the web.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "bin": {
+    "watcher": "src/bin/watcher.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "watcher": "node src/bin/watcher.js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "bundle": "node scripts/bundle.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1000.0",
+    "@aws-sdk/client-lambda": "^3.1000.0",
+    "@aws-sdk/client-s3": "^3.1000.0",
+    "@aws-sdk/client-s3vectors": "^3.1000.0",
+    "@aws-sdk/s3-request-presigner": "^3.1000.0",
+    "cheerio": "^1.2.0",
+    "context-retriever": "0.2.1",
+    "express": "^5.1.0",
+    "jose": "^6.0.0",
+    "rag": "0.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

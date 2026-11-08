@@ -1,0 +1,26 @@
+{
+  "name": "context-retriever",
+  "version": "0.2.1",
+  "description": "Broad Retrieval -> Deep Re-ranking: a provider-agnostic, recall-first RAG retrieval engine",
+  "license": "MIT OR Apache-2.0",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./testing": "./src/testing.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE-MIT",
+    "LICENSE-APACHE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.js\"",
+    "recall": "node --test --test-reporter=spec tests/recall.test.js"
+  },
+  "keywords": ["rag", "retrieval", "rerank", "embeddings", "llm"]
+}

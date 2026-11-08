@@ -1,0 +1,75 @@
+<main>
+  <header id="heading">
+    <img class="avatar" alt="" />
+    <h1 class="title"></h1>
+    <div class="actions">
+      <button id="reset" type="button" aria-label="Start a new chat" title="Start a new chat">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="1 4 1 10 7 10" />
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+        </svg>
+      </button>
+      <button id="close" type="button" aria-label="Close the chat">×</button>
+    </div>
+    <p class="credit">
+      Developed by
+      <a href="https://www.linkedin.com/company/vinaiak/" target="_blank" rel="noopener">vinaiak AI Pvt. Ltd.</a>
+    </p>
+  </header>
+  <div id="chat-area" role="log" aria-live="polite">
+    <p class="notice">
+      Protected by reCAPTCHA: Google's
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+      and
+      <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a>
+      apply.
+    </p>
+  </div>
+  <form id="composer">
+    <div id="attachments" hidden><p class="note" role="status"></p></div>
+    <button id="attach" type="button" aria-label="Attach images">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <circle cx="8.5" cy="8.5" r="1.5" />
+        <path d="M21 15l-5-5L5 21" />
+      </svg>
+    </button>
+    <input id="file-input" type="file" accept="image/*" multiple hidden />
+    <textarea id="text-input" rows="1" maxlength="2000" aria-label="Your message"></textarea>
+    <button id="send" type="submit" aria-label="Send" disabled>
+      <svg viewBox="3 1 18 20" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M20.447,11.105l-16-8A1,1,0,0,0,3.152,4.53L7.82,12,3.152,19.47a1,1,0,0,0,1.3,1.425l16-8a1,1,0,0,0,0-1.79ZM6.731,17.517,9.554,13H12a1,1,0,0,0,0-2H9.554L6.731,6.483,17.764,12Z"
+        />
+      </svg>
+    </button>
+  </form>
+</main>
+
+<!-- What the chatbot is doing while the visitor waits: its data-status picks the doodle. -->
+<template id="status">
+  <div class="box bot status">
+    <svg class="doodle understanding" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-4.5 3.5V17H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+      <path class="line" d="M7.5 9h9" />
+      <path class="line" d="M7.5 12.5h6" />
+    </svg>
+    <svg class="doodle searching" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="page" d="M6 2.5h8l4.5 4.5v13.5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-17a1 1 0 0 1 1-1zM14 2.5V7h4.5M8 11h8M8 14.5h8M8 18h5" />
+      <g class="glass">
+        <circle cx="11" cy="11" r="4.5" />
+        <path d="M14.3 14.3 19 19" />
+      </g>
+    </svg>
+    <svg class="doodle thinking" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="bulb" d="M12 5.5a5 5 0 0 0-3 9c.6.5.9 1 .9 1.7v.3h4.2v-.3c0-.7.3-1.2.9-1.7a5 5 0 0 0-3-9z" />
+      <path d="M9.9 19h4.2M10.8 21.5h2.4" />
+      <path class="rays" d="M12 1v1.6M4.6 3.6l1.1 1.1M19.4 3.6l-1.1 1.1M2 10.5h1.6M20.4 10.5H22" />
+    </svg>
+    <span class="text">
+      <span class="label"></span>
+      <span class="dots" aria-hidden="true"><i>.</i><i>.</i><i>.</i></span>
+    </span>
+  </div>
+</template>

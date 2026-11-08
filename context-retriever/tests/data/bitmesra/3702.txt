@@ -1,0 +1,23 @@
+#### Admission Procedures
+
+**(A) Undergraduate Programs:**
+
+| Sl.No. | Programs | Admission criterion |
+| --- | --- | --- |
+| 01 | B.Tech. (Duration : 4 Years) /Integrated M.Sc. (Duration : 5 Years) at Mesra Campus | * **Indian students -** Based on CRL in JEE-Main through CSAB (Central Seat Allocation Board) / JoSAA (Joint Seat Allocation Authority).<br>* **NRI/OCI/ Foreign National(FN) –** Based on marks obtained by the candidates in Class 12 / equivalent qualifying examination |
+| 02 | B.Arch (Duration: 5 Years) | * Based on valid NATA/JEE(Mains) Paper-2 score |
+| 03 | B.Pharm (Duration: 4 Years) | * Based on marks / score obtained by the candidates in JEE-Main or NEET-UG<br>* Merit list is prepared on the basis of 60% weightage to JEE (Main) / NEET-UG Score [total marks obtained] and 40% weightage to marks in Class 12 / equivalent qualifying examination |
+| 04 | BHM (Duration: 4 Years) | * Based on scores obtained in Class XIIth (10+2) or equivalent examination |
+| 05 | Integrated MBA (Duration: 5 Years) | * Based on scores obtained in Class XIIth (10+2) or equivalent examination and PI |
+| 06 | Integrated B.Sc. M.Sc. Chemistry (Duration: 5 Years) | * Based on scores obtained in Class XIIth (10+2) or equivalent examination and Screening Test |
+
+**(B) Postgraduate Programs:**
+
+| Sl.No. | Programs | Admission criterion |
+| --- | --- | --- |
+| 01 | MBA (Duration: 2 Years) | * Based on CAT /MAT/XAT/CMAT percentile / Scores and GD & PI |
+| 02 | Online MBA (Duration: 2 Years) | * Based on Institute Screening |
+| 03 | MCA (Duration: 2 Years) | * Based on performance of the candidates in Online Entrance Test and Interview. |
+| 04 | M.Tech. / M.Plan/M.Pharm/M.Sc. (Duration: 2 Years) | 1. GATE/GPAT/JAM/CUET: Based on GATE/GPAT/JAM/CUET score and Academic performance (80% weightage to GATE/GPAT score and 20% weightage to Academic performance).<br>2. Non-GATE/Non-GPAT/Non-JAM/Non-CUET: Based on Interview and Academic performance (20% weightage to interview and 80% weightage to Academic performance). |
+| 05 | Integrated M.Sc. <br>* Mathematics & Computing <br>* Physics <br>* Quantitative Economics & Data Analytics <br>(Duration: 5 Years) | * Based on AIR in JEE-Main through CSAB (Central Seat Allocation Board) / JoSAA (Joint Seat Allocation Authority) |
+| 06 | Ph.D. | * Based on performance in Entrance Test, Academic Performance and Interview. |

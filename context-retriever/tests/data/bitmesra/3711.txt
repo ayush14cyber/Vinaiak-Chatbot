@@ -1,0 +1,41 @@
+## RULES REGARDING REFUND OF FEES UNDER WITHDRAWAL TO NEWLY ADMITTED UG, PG AND PH.D. STUDENTS AT MESRA AND ITS EXTENSION CENTRES. *(EXCEPT NRI/OCL/FN STUDENTS)*
+
+Refund of fees to a student/candidate who has taken admission in any program of the Institute and subsequently decides to withdraw from the program, will be made as per the following rules:
+
+---
+
+### (A) For students admitted before commencement of classes:
+
+| S.No. | Particulars | Remarks |
+|------|-------------|---------|
+| 1. | Withdrawal before commencement of classes, as notified by the appropriate authority. | Refund after deduction of ₹1,000/- as processing charge. |
+| 2. | Withdrawal between 1st and 7th (both days inclusive) day from the date of commencement of classes, as notified by the appropriate authority, provided there is a subsequent round of admission scheduled wherein the seat thus vacated may be filled up. | 80% of fee deposited at the time of admission (rounded off to the next ₹100/-) |
+| 3. | Withdrawal after seven working days from the date of commencement of classes | 60% of fee deposited at the time of admission (rounded off to the next ₹100/-) |
+| 4. | Withdrawal after admission already being declared closed. | Only caution money |
+
+---
+
+### (B) For students admitted after commencement of classes:
+
+| S.No. | Particulars | Remarks |
+|------|-------------|---------|
+| 1. | Withdrawal within seven working days after the date of admission provided there is a subsequent round of admission scheduled wherein the seat may be filled up. | 80% of fee deposited at the time of admission (rounded off to the next ₹100/-) |
+| 2. | Withdrawal after seven working days from the date of admission | 60% of fee deposited at the time of admission (rounded off to the next ₹100/-) |
+| 3. | Withdrawal after admission already being declared closed | Only caution money |
+
+---
+
+However, the student has to apply through ERP to get the refund giving specific reasons for withdrawal along with proof of payment and the payment will be made in due course of time. This provision is applicable for programs where minimum strength is available.
+
+In case the admission is taken through the centralized counselling process and is also selected through another process, then he/she will be entitled for a refund only after withdrawal from the counselling process is confirmed through ERP.
+
+In any case, if the student has not been allotted classes of the new program, then he/she shall be entitled for a full refund of deposited fees except processing fee. Refund shall be made through ERP after he/she cancels his/her admission online.
+
+# Admission Cancellation Process(For Newly Admitted 1st Semester Students only)
+1. Login to the ERP Portal https://erpportal.bitmesra.ac.in/login.htm with your credential (current user id and default password 123456)
+2. After login it will ask to set your password and when the password is set it will prompt for re-login. Now login with the credentials set by you.
+2. Select Menu as Personal -> Admission Withdrawal Request, fill the application form carefully. Your application form will be processed
+accordingly(as per Institute Refund Rules).
+3. Once your application for withdrawal is processed/ approved your credentials will be freezed.
+4. Please note that candidate who are applying after commencement of classes, should also upload No Dues Certificate(format available at your allotted
+campus) along with the Cancelled Cheque .

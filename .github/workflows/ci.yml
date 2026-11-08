@@ -1,0 +1,43 @@
+name: ci
+
+# Every package of the npm workspace: context-retriever, rag, the portal's backend, the chatbot,
+# its client and its widget. All offline: the AWS clients and the models are faked in the tests.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'training-portal/frontend/**'
+  pull_request:
+    paths-ignore:
+      - 'training-portal/frontend/**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Tests
+        run: npm test
+
+      # The Lambdas' bundles, as deploys build them.
+      - name: Bundle the Lambdas
+        run: |
+          npm run bundle -w training-portal-backend
+          npm run bundle -w chatbot
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lambdas
+          path: |
+            training-portal/backend/dist
+            chatbot/dist

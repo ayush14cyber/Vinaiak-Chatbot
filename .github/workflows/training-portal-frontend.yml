@@ -1,0 +1,39 @@
+name: training-portal-frontend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'training-portal/frontend/**'
+      - '.github/workflows/training-portal-frontend.yml'
+  pull_request:
+    paths:
+      - 'training-portal/frontend/**'
+      - '.github/workflows/training-portal-frontend.yml'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: training-portal/frontend
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: training-portal/frontend/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # Needs no secret: without `NEXT_PUBLIC_GOOGLE_CLIENT_ID` the sign-in button just has no client.
+      - name: Build
+        run: npm run build

@@ -1,0 +1,46 @@
+**Seat Distribution of M. Tech. Programs 2025-2026**
+
+| Sl. No. | Name of M.Tech Program (Program code) | Program Code | Name of Department | UR | SC | ST | OBC-NCL | EWS | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | Earthquake Science & Engineering (GP) | GP | Applied Geophysics | 10 | 4 | 2 | 7 | 2 | 25 |
+| 2 | Chemical Engineering (CH) | CH | Chemical Engineering | 21 | 7 | 3 | 14 | 5 | 50 |
+| 3 | Pharmaceutical Science and Engineering (CY) | CY | Chemistry & Chemical Biology | 11 | 4 | 2 | 7 | 3 | 27 |
+| 4 | Structural Engineering (SE) | SE | Civil Engineering | 8 | 3 | 2 | 5 | 2 | 20 |
+| 5 | Geotechnical Engineering (GE) | GE | Civil Engineering | 8 | 3 | 2 | 5 | 2 | 20 |
+| 6 | Water Resources Engineering (WR) | WR | Civil Engineering | 8 | 3 | 2 | 5 | 2 | 20 |
+| 7 | Transportation Engineering (TE) | TE | Civil Engineering | 8 | 3 | 2 | 5 | 2 | 20 |
+| 8 | Computer Science and Engineering (CS) | CS | Computer Science and Engineering | 13 | 4 | 2 | 8 | 3 | 30 |
+| 9 | Artificial Intelligence & Data Science (AI) | AI | Computer Science and Engineering | 13 | 4 | 2 | 8 | 3 | 30 |
+| 10 | Power System Engineering (PS) | PS | Electrical Engineering | 8 | 3 | 2 | 5 | 2 | 20 |
+| 11 | Power Electronics & Electrical Drives (PD) | PD | Electrical Engineering | 8 | 3 | 1 | 6 | 2 | 20 |
+| 12 | Electronics Engineering (Communication & Signal Processing) (SP) | SP | Electronics Engineering | 10 | 4 | 2 | 7 | 2 | 25 |
+| 13 | Electronics Engineering (Optical Communication & Integrated Photonics) (OC) | OC | Electronics Engineering | 8 | 3 | 2 | 5 | 2 | 20 |
+| 14 | Electronics Engineering (RF & Microwave Engineering) (RF) | RF | Electronics Engineering | 8 | 3 | 2 | 5 | 2 | 20 |
+| 15 | Electronics Engineering (VLSI Design) (VL) | VL | Electronics Engineering | 12 | 5 | 2 | 8 | 3 | 30 |
+| 16 | Environmental Science & Engineering (ES) | ES | Environmental Science & Engineering | 17 | 6 | 3 | 11 | 5 | 42 |
+| 17 | Fuel and Energy Engineering (FE) | FE | Fuel Minerals and Metallurgical Engineering | 10 | 4 | 2 | 7 | 2 | 25 |
+| 18 | Mineral Engineering (FM) | FM | Fuel Minerals and Metallurgical Engineering | 10 | 4 | 1 | 7 | 3 | 25 |
+| 19 | Metallurgical Engineering (MT) | MT | Fuel Minerals and Metallurgical Engineering | 10 | 4 | 2 | 6 | 3 | 25 |
+| 20 | Industrial Engineering & Management (MS) | MS | Management Studies and Industrial Engineering | 16 | 6 | 3 | 11 | 4 | 40 |
+| 21 | Data Analytics (MA/DA) | MA | Mathematics and Computing | 5 | 2 | 1 | 3 | 1 | 12 |
+| DA | 3 | 1 | 1 | 2 | 1 | 8 |
+| 22 | Mechanical Engineering (Machine Design) (MD) | MD | Mechanical Engineering | 16 | 6 | 3 | 11 | 4 | 40 |
+| 23 | Mechanical Engineering (Manufacturing Engineering) (MF) | MF | Mechanical Engineering | 16 | 6 | 3 | 11 | 4 | 40 |
+| 24 | Mechanical Engineering (Thermal Engineering) (TH) | TH | Mechanical Engineering | 16 | 6 | 3 | 11 | 4 | 40 |
+| 25 | Mining Engineering (MN) | MN | Mining Engineering | 16 | 6 | 3 | 11 | 4 | 40 |
+| 26 | Geomatics (GM) | GM | Mining Engineering | 8 | 3 | 1 | 6 | 2 | 20 |
+| 27 | Tunneling and Underground Space Technology (TU) | TU | Mining Engineering | 8 | 3 | 1 | 6 | 2 | 20 |
+| 28 | Petroleum Engineering (PE) | PE | Petroleum Engineering | 18 | 7 | 3 | 12 | 4 | 44 |
+| **Grand Total** | 323 | 120 | 60 | 215 | 80 | 798 |
+
+##### \*Number of seats for sponsored/IIT graduate candidates/QIP candidates will be super numeric, subject to a maximum limit of 20% of total sanctioned seats.
+
+##### Persons with Disability (PwD) with at least 40% impairment – 5% seats in each of UR, EWS, OBC-NCL, SC, and ST category seats.
+
+##### **NOTE:**
+
+##### **UR**\- Unreserved, **SC**\- Scheduled Caste, **ST**\- Scheduled Tribe, **OBC (NCL)**\- Other Backward Classes (Non-Creamy Layers) **EWS**\-Economically Weaker Sections.
+
+  
+
+© 2025 IIT (ISM), Dhanbad. All rights reserved.

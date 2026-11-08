@@ -1,0 +1,16 @@
+{
+  "name": "chatbot-client",
+  "version": "0.1.0",
+  "description": "Talks to an org's chatbot: signs in with reCAPTCHA v3 and streams its replies.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "node --test src/index.test.js"
+  }
+}

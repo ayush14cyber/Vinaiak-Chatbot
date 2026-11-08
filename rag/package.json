@@ -1,0 +1,27 @@
+{
+  "name": "rag",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The models and storage behind context-retriever: chunker, embedder, reranker, media descriptor, and the S3 Vectors + DynamoDB store. Also the chat bot's prompt and tools.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./ai": "./src/ai.js",
+    "./retriever": "./src/retriever.js",
+    "./open-client": "./src/open-client.js",
+    "./log": "./src/log.js",
+    "./media": "./src/media-descriptor.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.js\""
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1000.0",
+    "@aws-sdk/client-s3vectors": "^3.1000.0",
+    "context-retriever": "0.2.1"
+  }
+}

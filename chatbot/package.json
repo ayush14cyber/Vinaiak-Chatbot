@@ -1,0 +1,30 @@
+{
+  "name": "chatbot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The chatbot an org embeds on its site (Express): a visitor signs in past reCAPTCHA, and its replies stream as NDJSON from the org's documents.",
+  "type": "module",
+  "main": "src/app.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "dev": "node --watch src/main.js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "test:live": "LIVE=1 node --test \"tests/**/*.test.js\"",
+    "bundle": "node scripts/bundle.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1000.0",
+    "@aws-sdk/client-s3": "^3.1000.0",
+    "@aws-sdk/client-s3vectors": "^3.1000.0",
+    "express": "^5.1.0",
+    "jose": "^6.0.0",
+    "rag": "0.1.0",
+    "training-portal-backend": "0.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

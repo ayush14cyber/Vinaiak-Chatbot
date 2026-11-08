@@ -1,0 +1,77 @@
+{
+  "_comment": [
+    "Labelled queries for measuring recall over the committed corpus.",
+    "Every `relevant` label was verified by grepping the source pages for the",
+    "query's discriminative terms: a page is listed only if it genuinely answers",
+    "the question, and pages that merely mention a word in passing are not.",
+    "Labels are page-level, because the chunk ids depend on how the chunker of",
+    "the day split the page, while the question of 'did we find the page that",
+    "answers this' does not."
+  ],
+  "queries": [
+    {
+      "query": "Which original documents must I bring for physical verification at admission?",
+      "relevant": ["bitmesra/3718.txt", "iitism/95.txt"]
+    },
+    {
+      "query": "How do I submit the anti-ragging affidavit and create an ABC id?",
+      "relevant": ["bitmesra/3704.txt", "bitmesra/3718.txt"]
+    },
+    {
+      "query": "Is there a toll free number to contact the institute?",
+      "relevant": ["bitmesra/3708.txt", "bitmesra/3718.txt"]
+    },
+    {
+      "query": "How much is deducted if I withdraw after classes have commenced?",
+      "relevant": ["bitmesra/3711.txt", "bitmesra/3705.txt"]
+    },
+    {
+      "query": "What is the fee structure for the Online MBA programme?",
+      "relevant": ["bitmesra/3712.txt"]
+    },
+    {
+      "query": "What is the application fee for a PhD programme?",
+      "relevant": ["iitism/82.txt", "iitism/86.txt"]
+    },
+    {
+      "query": "How are seats distributed across the M.Tech programmes?",
+      "relevant": ["iitism/99.txt"]
+    },
+    {
+      "query": "Where can I find the academic calender and the holiday list?",
+      "relevant": ["iitism/77.txt"]
+    },
+    {
+      "query": "Are undergraduate admissions done through JOSAA and JEE Advanced?",
+      "relevant": ["iitism/35.txt", "bitmesra/3702.txt", "bitmesra/3703.txt"]
+    },
+    {
+      "query": "When will shortlisting for the MBA personal interview be announced?",
+      "relevant": ["iitism/36.txt"]
+    },
+    {
+      "query": "What are the currently active notices from the institute?",
+      "relevant": ["iitism/92.txt"]
+    },
+    {
+      "query": "How do I register on the ERP portal and generate a fee challan?",
+      "relevant": ["bitmesra/3675.txt"]
+    },
+    {
+      "query": "What are the steps to apply for M.Tech admission?",
+      "relevant": ["iitism/95.txt"]
+    },
+    {
+      "query": "Which professors teach in the department, and what are their emails?",
+      "relevant": ["iitism/100.txt"]
+    },
+    {
+      "query": "What does the health centre on campus provide?",
+      "relevant": ["iitism/104.txt"]
+    },
+    {
+      "query": "What is the tentative admission calendar for the coming academic year?",
+      "relevant": ["bitmesra/3703.txt"]
+    }
+  ]
+}

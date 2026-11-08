@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Chatbot preview</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f4f4f5;
+        font-family: system-ui, sans-serif;
+      }
+      header {
+        height: 56px;
+        background: #27272a;
+      }
+      main {
+        display: grid;
+        gap: 16px;
+        max-width: 720px;
+        margin: 32px auto;
+        padding: 0 24px;
+      }
+      .block {
+        height: 14px;
+        border-radius: 7px;
+        background: #e4e4e7;
+      }
+      .block.hero {
+        height: 160px;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- A stand-in for the org's site. -->
+    <header></header>
+    <main>
+      <div class="block hero"></div>
+      <div class="block"></div>
+      <div class="block" style="width: 85%"></div>
+      <div class="block" style="width: 60%"></div>
+    </main>
+    <script>
+      // The portal's chatbot page shows the org's chatbot here, with the settings in this page's
+      // hash as the widget's data-* attributes. The widget's own address is fixed: a page on the
+      // portal's origin must never load a script that a link chooses.
+      (function () {
+        var settings = {};
+        try {
+          settings = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+        } catch (e) {}
+        var script = document.createElement("script");
+        script.src = "https://chatbot.vinaiak.com/public/inject.js";
+        script.async = true;
+        for (var name in settings) {
+          if (typeof settings[name] === "string") script.setAttribute("data-" + name, settings[name]);
+        }
+        document.head.appendChild(script);
+        // Open, so the chat itself shows; closing it shows the button that opens it.
+        new MutationObserver(function (_, observer) {
+          var launcher = document.getElementById("vinaiak-chatbot-launcher");
+          if (launcher) {
+            observer.disconnect();
+            launcher.click();
+          }
+        }).observe(document.body, { childList: true });
+      })();
+    </script>
+  </body>
+</html>

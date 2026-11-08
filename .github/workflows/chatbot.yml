@@ -1,0 +1,66 @@
+name: push inject.js
+
+# Builds the chatbot widget and publishes it as the one inject.js every org's link loads:
+# https://chatbot.vinaiak.com/public/inject.js, with the launcher's default image beside it,
+# public/opener.webp. It bundles the client library from its sources, so a change there
+# publishes too.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'chatbot-frontend/**'
+      - 'chatbot/client/src/**'
+      - '.github/workflows/chatbot.yml'
+  pull_request:
+    paths:
+      - 'chatbot-frontend/**'
+      - 'chatbot/client/src/**'
+      - '.github/workflows/chatbot.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Test the client
+        run: npm test -w chatbot-client
+
+      - name: Build inject.js
+        run: npm run build -w chatbot-frontend
+
+      # A role that may only write public/inject.js and public/opener.webp, through GitHub's OIDC.
+      - uses: aws-actions/configure-aws-credentials@v4
+        if: github.event_name != 'pull_request'
+        with:
+          role-to-assume: ${{ vars.INJECT_JS_ROLE_ARN }}
+          aws-region: ap-south-1
+
+      # The launcher's default image goes first, so inject.js never points at one not there yet.
+      # inject.js is gzipped, since S3 serves a file as it is stored and every browser takes gzip.
+      # With `no-cache`, browsers check for a newer one on each page load (by its ETag), so a push
+      # reaches every site at once.
+      - name: Push to S3
+        if: github.event_name != 'pull_request'
+        working-directory: chatbot-frontend
+        run: |
+          aws s3 cp src/assets/opener.webp s3://vinaiak-public/public/opener.webp \
+            --content-type image/webp \
+            --cache-control no-cache
+          gzip -9 --stdout dist/inject.js > dist/inject.js.gz
+          aws s3 cp dist/inject.js.gz s3://vinaiak-public/public/inject.js \
+            --content-type 'text/javascript; charset=utf-8' \
+            --content-encoding gzip \
+            --cache-control no-cache
