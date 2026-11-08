@@ -177,8 +177,8 @@ export function parseLinks(md) {
   return links;
 }
 
-/** `text`'s lines as Rust's `lines()` gives them: no final empty one, no `\r`. */
-function rustLines(text) {
+/** `text`'s lines: no final empty one, no `\r`. */
+function splitLines(text) {
   const lines = text.split("\n");
   if (lines[lines.length - 1] === "") lines.pop();
   return lines.map((line) => (line.endsWith("\r") ? line.slice(0, -1) : line));
@@ -191,7 +191,7 @@ export function context(md, link) {
   const first = newlines(md.slice(0, link.range[0]));
   const last = first + newlines(md.slice(link.range[0], link.range[1]));
   const from = Math.max(first - LINES_ABOVE, 0);
-  return rustLines(md)
+  return splitLines(md)
     .slice(from, last + LINES_BELOW + 1)
     .join("\n");
 }

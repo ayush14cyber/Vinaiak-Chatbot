@@ -2,7 +2,7 @@
 // chats for, its conversation, and how many requests it served and may serve. Writes are
 // conditional on the version read (`If-Match`), so parallel requests can't pass the limit.
 //
-// Stored as the Rust chatbot stored it: `{req_count, allowed, org: {org_name, openrouter_key,
+// Session layout: `{req_count, allowed, org: {org_name, openrouter_key,
 // mongodb_key}, chat, data_not_found, conversation_id}`.
 
 import { randomUUID } from "node:crypto";

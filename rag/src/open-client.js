@@ -1,6 +1,5 @@
 // A client for any OpenAI-compatible API (OpenRouter here): chat completions, streamed or not,
-// the conversation history sent with each request, and embeddings. A port of the `open-client`
-// Rust crate the Rust services used, so a session it stored reads back the same.
+// the conversation history sent with each request, and embeddings.
 //
 // Messages are kept as the Chat Completions API defines them, so they are sent as they are:
 //   { role: "user", content: string | ContentPart[] }
@@ -238,7 +237,7 @@ export function toolCallArgs(call) {
 let generatedCallId = 0;
 const generateCallId = () => `call_${generatedCallId++}`;
 
-/** Drops the fields with no value, as the Rust client did for unknown fields. */
+/** Drops empty or null fields. */
 function withValue(fields) {
   const out = {};
   for (const [key, value] of Object.entries(fields)) {
@@ -380,7 +379,7 @@ export class Session {
     this.compactor = { limit, prompt: DEFAULT_SUMMARY_PROMPT };
   }
 
-  /** The session as it is stored, in the Rust client's layout. */
+  /** The session as it is stored. */
   toJSON() {
     const handler = { limit: this.compactor.limit };
     if (this.compactor.prompt !== DEFAULT_SUMMARY_PROMPT) handler.prompt = this.compactor.prompt;

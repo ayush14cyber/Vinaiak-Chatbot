@@ -99,7 +99,7 @@ export function linkJs(org, w) {
   set("greeting", w.greeting);
   if (w.hide_watermark) set("watermark", "false");
   for (const [name, color] of Object.entries(w.colors)) set(`${name}-color`, color);
-  // Sorted by key, as the Rust service's JSON map wrote it.
+  // Sorted by key for deterministic output.
   const sorted = Object.fromEntries(Object.entries(data).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)));
   return `// The chatbot of \`${org}\`, as set up in the training portal: saving there replaces this file.
 (function () {

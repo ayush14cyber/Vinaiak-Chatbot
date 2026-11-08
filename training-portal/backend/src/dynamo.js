@@ -1,4 +1,4 @@
-// DynamoDB attribute values and items, as the Rust services read and wrote them.
+// DynamoDB attribute values and items serialization helpers.
 
 import { ConditionalCheckFailedException, TransactionCanceledException } from "@aws-sdk/client-dynamodb";
 

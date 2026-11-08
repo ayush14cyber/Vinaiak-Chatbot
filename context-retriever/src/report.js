@@ -83,7 +83,7 @@ function debugValue(value) {
 }
 
 /**
- * A degradation as one line for a log, in the form the Rust engine's `Debug` printed:
+ * A degradation formatted as one line for a log:
  * `RerankCollapsed { failed: 1, total: 1 }`, `DeadlineHit`.
  */
 export function describeDegradation(d) {

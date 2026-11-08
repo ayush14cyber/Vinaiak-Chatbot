@@ -43,8 +43,8 @@ function ns(namespace) {
 
 // ---- the wire format of a chunk in S3 Vectors metadata ----
 //
-// `data` holds the whole chunk as JSON, in the layout the Rust store wrote, so an index either
-// wrote reads the same: `{"meta": {doc, group, group_ord, part_ord, group_len, cohesion, state_fp,
+// `data` holds the whole chunk as JSON:
+// `{"meta": {doc, group, group_ord, part_ord, group_len, cohesion, state_fp,
 // content_fp, chars, metadata}, "text", "context", "topic", "placement"}`. The fingerprints are
 // unsigned 64-bit JSON numbers, kept exact as `BigInt`s.
 

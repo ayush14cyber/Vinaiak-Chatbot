@@ -12,7 +12,7 @@ import { callLog } from "./call-log.js";
 import { MAX_BODY_BYTES, chat, reset } from "./chat.js";
 import { ApiError, asApiError } from "./errors.js";
 
-/** Largest body of the other routes, as axum's default limit. */
+/** Largest body of the other routes (2 MB default limit). */
 const DEFAULT_BODY_BYTES = 2 * 1024 * 1024;
 
 /** What the routes use: AWS clients, `fetch`, and the secrets. */

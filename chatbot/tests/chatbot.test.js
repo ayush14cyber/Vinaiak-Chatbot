@@ -69,7 +69,7 @@ test("starting over forgets the conversation but not the count", () => {
   assert.notEqual(s.conversationId, first);
 });
 
-test("a session is stored as the Rust chatbot stored it", () => {
+test("a session is stored with the expected layout", () => {
   const s = new Session({ org: org("Test", "k") });
   s.chat.ask("Hi");
   const stored = JSON.parse(JSON.stringify(s));

@@ -22,7 +22,7 @@ import { TextMeter, emptySummary, payloadBytes } from "./stage.js";
 import { Cohesion } from "./types.js";
 import { clamp } from "./util.js";
 
-const EPSILON = 1.1920929e-7; // f32::EPSILON
+const EPSILON = 1.1920929e-7; // single-precision float epsilon
 
 const elapsed = (started) => Math.round(performance.now() - started);
 

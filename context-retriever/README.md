@@ -23,11 +23,10 @@ console.log(outcome.toPrompt());
   (a fee table) share a group and always come back whole.
 - **The recall dial** (`RetrievalConfig.withRecall(0..1)`) trades cost for recall: how many vector
   hits are fetched and how many go to the reranker (`RetrievalConfig.resolve`).
-- **Fingerprints** of chunk state and content are FNV-1a 64-bit values, as `BigInt`s, identical to
-  the Rust crate's, so indexes it wrote stay valid.
+- **Fingerprints** of chunk state and content are FNV-1a 64-bit values, represented as `BigInt`s.
 - **Degradations** (a reranker that failed, a chunker that fell back to cutting by size) are
   reported on the outcome rather than thrown.
 
 `npm test` runs the property, engine, real-corpus and recall tests (`tests/`), offline.
 
-Dual-licensed under MIT or Apache-2.0, as the original crate.
+Dual-licensed under MIT or Apache-2.0.

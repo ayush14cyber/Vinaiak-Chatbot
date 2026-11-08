@@ -74,7 +74,7 @@ const parseKind = (kind) => (kind === Kind.File || kind === Kind.Directory ? kin
 
 const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
 
-/** `items` mapped by `f`, at most `limit` at once, results in order (Rust's `buffered`). */
+/** `items` mapped by `f`, at most `limit` at once, preserving result order. */
 async function mapConcurrent(items, limit, f) {
   const out = new Array(items.length);
   let next = 0;
@@ -183,7 +183,7 @@ export class Watcher {
   }
 }
 
-/** Strings by their UTF-8 bytes, as Rust orders them. */
+/** Compares strings by their UTF-8 bytes. */
 const cmp = (a, b) => Buffer.compare(Buffer.from(a, "utf8"), Buffer.from(b, "utf8"));
 
 /** `levels` as stored: a list of maps. */
@@ -748,7 +748,7 @@ async function listed(app, job) {
       return w ? [[string(item, "org_id"), w]] : [];
     });
   }
-  // Never checked first, as Rust orders `None` before `Some`.
+  // Never checked first (`null` checkedAt before timestamps).
   return watchers.sort(([, a], [, b]) => (a.checkedAt ?? -1) - (b.checkedAt ?? -1));
 }
 

@@ -17,7 +17,7 @@ export const ContextPlacement = Object.freeze({
   None: "none",
 });
 
-/** The number of chars (Unicode scalar values) in `text`, as Rust counts them. */
+/** The number of Unicode scalar values (characters) in `text`. */
 export function charCount(text) {
   let n = 0;
   for (let i = 0; i < text.length; i++) {
@@ -33,7 +33,7 @@ export function byteLength(text) {
   return Buffer.byteLength(text, "utf8");
 }
 
-/** `text` split at whitespace runs, without empty pieces, as Rust's `split_whitespace`. */
+/** `text` split at whitespace runs, without empty pieces. */
 export function splitWhitespace(text) {
   return text.split(/\s+/u).filter((word) => word.length > 0);
 }
@@ -45,7 +45,7 @@ export function normalizeWs(text) {
 
 /**
  * The lines of `text`, each keeping its `'\n'` (the last may have none), so they concatenate back
- * to `text` exactly, as Rust's `split_inclusive('\n')`.
+ * to `text` exactly.
  */
 export function linesInclusive(text) {
   return text.match(/[^\n]*\n|[^\n]+$/g) ?? [];

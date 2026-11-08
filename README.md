@@ -1,9 +1,4 @@
-# vinaiak AI chatbot (JavaScript)
-
-> This is the JavaScript port of the original Rust + TypeScript project. The architecture, the
-> AWS resources, the routes and the data formats are unchanged, so it can replace the Rust
-> services in place: the same tables, buckets, vector indexes, sessions and reports are read and
-> written in the same shapes. See [Porting notes](#porting-notes) for what maps to what.
+# vinaiak AI chatbot
 
 An organisation, such as a college, trains an AI assistant on its own website and documents, then
 puts that assistant on its sites as a chatbot. The system has two halves that share one store of
@@ -282,8 +277,7 @@ GitHub Actions:
 Each API is an ordinary Express server. On Lambda it runs behind the
 [AWS Lambda Web Adapter](https://github.com/awslabs/aws-lambda-web-adapter), which turns Function
 URL calls into HTTP requests to the server on port 8080 and streams its responses back, so a reply
-can start before the work ends, as the Rust services' `run_with_streaming_response` did. The
-watcher runner is a plain Node handler.
+can start before the work ends. The watcher runner is a plain Node handler.
 
 ```sh
 npm ci
@@ -352,22 +346,4 @@ CHATBOT_API_URL=http://localhost:3000 npm run dev -w chatbot-frontend
 - **Tests:** `npm test` at the root runs every package's (Node's built-in test runner, offline);
   `npm run lint` and `npm run build` in `training-portal/frontend`.
 
-## Porting notes
 
-| Rust / TypeScript | JavaScript |
-| --- | --- |
-| axum routers and extractors | Express 5 routes. A handler is `async (app, req) => ({status, body})`; `serve()` in `training-portal/backend/src/http.js` adds no-store, keep-alive, the call log and the deadline, as the axum layers did. Bodies are read raw and parsed after the caller is checked, as axum's `Json` extractor ran last. |
-| `ApiError` enums | `ApiError` classes with the same statuses and messages: `{"error": …}` from the portal, `{code, message}` from the chatbot. |
-| `aws-sdk-*` crates | AWS SDK for JavaScript v3, with raw DynamoDB attribute values (`S`, `N`, `L`, `BOOL` in `dynamo.js`), so rows keep their exact shape. |
-| `jsonwebtoken` | `jose`: Google ID tokens (RS256 against Google's cached JWKS) and the chatbot's HS256 session tokens. |
-| `scraper` | `cheerio`, for watched pages' text and links. |
-| `open-client` crate | `rag/src/open-client.js`: the same session JSON (`history`, `message_number`, `remember_reply`, `overflow_handler`), streaming and summarizing. |
-| `u64` fingerprints in chunk metadata | `BigInt`, written as bare JSON numbers and read back exactly with `JSON.parse`'s `context.source` (Node 22), so indexes written by the Rust services stay valid. |
-| `cargo lambda` binaries | esbuild bundles on `nodejs22.x`, the APIs behind the Lambda Web Adapter. |
-| TypeScript (`.ts`, `.tsx`) | JavaScript (`.js`, `.jsx`), with the type aliases kept as JSDoc `@typedef`s. |
-
-The offline tests were ported with the code (snapshot noise, watcher planning, the tree, uploads'
-presigned headers, sign-in, sessions, chat streaming, and the engine's recall table, which the
-JavaScript engine reproduces exactly). The tests that needed real AWS resources or models
-(`tests/live.rs`, the `#[ignore]`d chatbot tests, and `rag`'s DynamoDB Local tests) were not;
-in the JavaScript tests those services are faked.

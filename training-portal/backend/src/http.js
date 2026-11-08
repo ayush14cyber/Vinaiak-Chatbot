@@ -95,7 +95,7 @@ export function describe(error) {
   return message;
 }
 
-/** `"401 Unauthorized"`, as Rust prints a status. */
+/** Formats status code and name, e.g. `"401 Unauthorized"`. */
 export const statusText = (status) => `${status} ${STATUS_CODES[status] ?? ""}`.trim();
 
 /** A JSON reply. */
@@ -225,7 +225,7 @@ export function serve(handler) {
 /**
  * The JSON body of `req`, checked against `shape`: `{field: "string" | "string?" | "number?" |
  * "bool?" | "array" | "array?" | "object" | "object?"}`. A `?` field defaults to `undefined`
- * (`false` for a bool, `[]` for an array). Read after the caller is checked, as axum did.
+ * (`false` for a bool, `[]` for an array). Read after the caller is checked.
  */
 export function body(req, shape = null) {
   let value;

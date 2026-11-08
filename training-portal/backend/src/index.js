@@ -45,7 +45,7 @@ export { CHAT_BUCKET } from "./data-not-found.js";
 export { COOKIE as SESSION_COOKIE } from "./session.js";
 export { run as runWatchers } from "./watchers.js";
 
-/** Each route's handlers by method, in the order axum's router listed them. */
+/** Each route's handlers by method. */
 const ROUTES = {
   "/session": { post: session.signIn, delete: session.signOut },
   "/me": { get: orgs.me },
@@ -78,12 +78,12 @@ export function router(app) {
   const server = express();
   server.disable("x-powered-by");
   server.set("query parser", "simple");
-  // Bodies are kept raw and parsed by each handler after it checks the caller, as axum did.
+  // Bodies are kept raw and parsed by each handler after it checks the caller.
   server.use(express.raw({ type: () => true, limit: MAX_BODY }));
   for (const [path, methods] of Object.entries(ROUTES)) {
     const route = server.route(path);
     for (const [method, handler] of Object.entries(methods)) route[method](serve((req) => handler(app, req)));
-    // Another method on a known path, as axum answers it.
+    // Method not allowed on a known path.
     route.all((req, res) => {
       res.setHeader("cache-control", "no-store");
       res.setHeader("allow", Object.keys(methods).map((m) => m.toUpperCase()).join(","));

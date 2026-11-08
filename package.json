@@ -1,7 +1,7 @@
 {
   "name": "serverless-vinaiak",
   "private": true,
-  "description": "vinaiak AI chatbot: the training portal, the chatbot, and the retrieval engine behind both, in JavaScript.",
+  "description": "vinaiak AI chatbot: the training portal, the chatbot, and the retrieval engine behind both.",
   "type": "module",
   "workspaces": [
     "context-retriever",

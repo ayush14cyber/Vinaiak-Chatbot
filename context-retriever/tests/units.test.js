@@ -6,7 +6,7 @@ import { test } from "node:test";
 import { Cohesion, ContextPlacement, RetrievalConfig, ids, text } from "../src/index.js";
 
 test("fnv1a64 is stable and field-framed", () => {
-  // Pinned goldens, the same values the Rust engine pinned: a change would invalidate every
+  // Pinned goldens: a change would invalidate every
   // fingerprint already written to a production index.
   assert.equal(ids.fnv1a64([]), 0xcbf29ce484222325n);
   assert.equal(ids.fnv1a64([""]), 0xa8c7f832281a39c5n);

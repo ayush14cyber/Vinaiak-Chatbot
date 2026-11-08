@@ -58,7 +58,7 @@ export function position(id) {
   return [gn, pn];
 }
 
-/** Compares two strings by code point, as Rust compares `String`s. */
+/** Compares two strings by Unicode code point order. */
 export function cmpStr(a, b) {
   return a < b ? -1 : a > b ? 1 : 0;
 }
@@ -69,8 +69,8 @@ const PRIME_LO = 0x1b3;
  * FNV-1a 64, length-framed per field, as a `BigInt`.
  *
  * Framing is load-bearing: without it `["ab", ""]` and `["a", "b"]` hash identically. These values
- * are persisted in the vector store, so changing this function forces a full re-index. It computes
- * exactly what the Rust engine computed, so an index it wrote stays valid.
+ * are persisted in the vector store, so changing this function forces a full re-index to keep
+ * stored fingerprints valid.
  *
  * @param {Array<Uint8Array|string>} fields bytes, or strings hashed as UTF-8
  */

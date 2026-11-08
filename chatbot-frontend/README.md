@@ -67,7 +67,7 @@ npm run dev     # rebuilds on change, and serves http://localhost:8000/demo.html
 The build reads two environment variables:
 
 - `CHATBOT_API_URL` is the chatbot API. It defaults to the deployed Function URL; use e.g.
-  `http://localhost:3000` for a local `cargo run`.
+  `http://localhost:3000` for a local server.
 - `RECAPTCHA_SITE_KEY` is the reCAPTCHA Enterprise site key. It defaults to the one the backend's
   `GRECAPTCHA_KEY` secret belongs to.
 

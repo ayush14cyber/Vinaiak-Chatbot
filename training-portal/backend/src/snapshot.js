@@ -80,7 +80,7 @@ export class Snapshot {
 
   /** Markdown, as Firecrawl scraped it. */
   static ofMarkdown(markdown) {
-    const lines = rustLines(markdown)
+    const lines = splitLines(markdown)
       .map((line) => collapse(line.replace(URL_RE(), (url) => cleanUrl(url, null))))
       .filter((line) => line.length > 0);
     return Snapshot.ofLines(lines);
@@ -152,8 +152,8 @@ export class Snapshot {
   }
 }
 
-/** `text`'s lines as Rust's `lines()` gives them: no final empty one, no `\r`. */
-function rustLines(text) {
+/** `text`'s lines: no final empty one, no `\r`. */
+function splitLines(text) {
   const lines = text.split("\n");
   if (lines[lines.length - 1] === "") lines.pop();
   return lines.map((line) => (line.endsWith("\r") ? line.slice(0, -1) : line));

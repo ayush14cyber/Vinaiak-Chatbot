@@ -104,7 +104,7 @@ export function bearer(req) {
   return match ? match[1] : null;
 }
 
-/** A header the call needs but lacks: a 400, as axum's typed headers answer. */
+/** A header the call needs but lacks: 400 Bad Request. */
 export class HeaderError extends Error {
   constructor(message) {
     super(message);
